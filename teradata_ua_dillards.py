@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# Exercise 1. How many distinct dates are there in the saledate column of the transaction table for each month/year combination in the database?
+# Query distinct dates in the saledate column of the transaction table for each month/year combination in the database.
 
 # In[ ]:
 
@@ -14,7 +14,7 @@ GROUP BY month_num, year_num
 ORDER BY numdates DESC;
 
 
-# Exercise 2. Use a CASE statement within an aggregate function to determine which sku had the greatest total sales during the combined summer months of June, July, and August.
+# Use a CASE statement within an aggregate function to determine which sku had the greatest total sales during the combined summer months of June, July, and August.
 
 # In[ ]:
 
@@ -30,7 +30,7 @@ GROUP BY sku
 ORDER BY total_sale DESC;
 
 
-# Exercise 3. How many distinct dates are there in the saledate column of the transaction table for each month/year/store combination in the database? Sort your results by the number of days per combination in ascending order.
+# Query distinct date in the saledate column of the transaction table for each month/year/store combination in the database Sort your results by the number of days per combination in ascending order.
 
 # In[ ]:
 
@@ -44,7 +44,7 @@ GROUP BY 2,3,4
 ORDER BY numdates ASC;
 
 
-# Exercise 4. What is the average daily revenue for each store/month/year combination in the database? Calculate this by dividing the total revenue for a group by the number of sales days available in the transaction table for that group.
+# The average daily revenue for each store/month/year combination in the database. Calculate this by dividing the total revenue for a group by the number of sales days available in the transaction table for that group.
 
 # In[ ]:
 
@@ -78,7 +78,7 @@ FROM (SELECT
  HAVING saledates >= 20) AS sub;
 
 
-# Exercise 5. What is the average daily revenue brought in by Dillard’s stores in areas of high, medium, or low levels of high school education?
+# The average daily revenue brought in by Dillard’s stores in areas of high, medium, or low levels of high school education.
 
 # In[ ]:
 
@@ -112,7 +112,7 @@ GROUP BY sub1.education;
 
 
 # 
-# Exercise 6. Compare the average daily revenues of the stores with the highest median msa_income and the lowest median msa_income. In what city and state were these stores, and which store had a higher average daily revenue?
+# Compare the average daily revenues of the stores with the highest median msa_income and the lowest median msa_income. The city, state, and the store which had a higher average daily revenue.
 
 # In[ ]:
 
@@ -141,7 +141,7 @@ WHERE s.msa_income IN ((SELECT MIN(msa_income) FROM store_msa),
 GROUP BY s.msa_income, s.city, s.state;
 
 
-# Exercise 7: What is the brand of the sku with the greatest standard deviation in sprice? Only examine skus that have been part of over 100 transactions.
+# The brand of the sku with the greatest standard deviation in sprice. Only examine skus that have been part of over 100 transactions.
 
 # In[ ]:
 
@@ -156,7 +156,7 @@ JOIN skuinfo s ON t.sku = s.sku
 ORDER BY t.stddev_sprice DESC;
 
 
-# Exercise 8: Examine all the transactions for the sku with the greatest standard deviation in sprice, but only consider skus that are part of more than 100 transactions.
+# Examine all the transactions for the sku with the greatest standard deviation in sprice, but only consider skus that are part of more than 100 transactions.
 
 # In[ ]:
 
@@ -174,7 +174,7 @@ WHERE sku = (SELECT sub.sku FROM(SELECT top 1 s.brand, t.stddev_sprice, t.sku
 
 
 # 
-# Exercise 9: What was the average daily revenue Dillard’s brought in during each month of the year?
+# The average daily revenue Dillard’s brought in during each month of the year.
 
 # In[ ]:
 
@@ -197,7 +197,7 @@ ORDER BY 2 DESC;
 
 
 # 
-# Exercise 10: Which department, in which city and state of what store, had the greatest % increase in average daily sales revenue from November to December?
+# The department, in which city and state of what store, had the greatest % increase in average daily sales revenue from November to December.
 
 # In[ ]:
 
@@ -230,7 +230,7 @@ ORDER BY sub2.per_increase DESC
 ("")
 
 
-# Exercise 11: What is the city and state of the store that had the greatest decrease in average daily revenue from August to September?
+# the city and state of the store that had the greatest decrease in average daily revenue from August to September.
 
 # In[ ]:
 
@@ -260,7 +260,7 @@ ORDER BY sub2.per_decrease DESC
 ("")
 
 
-# Exercise 12: Determine the month of maximum total revenue for each store. Count the number of stores whose month of maximum total revenue was in each of the twelve months. Then determine the month of maximum average daily revenue. Count the number of stores whose month of maximum average daily revenue was in each of the twelve months. How do they compare?
+# The month of maximum total revenue for each store. Count the number of stores whose month of maximum total revenue was in each of the twelve months. Then determine the month of maximum average daily revenue. Count the number of stores whose month of maximum average daily revenue was in each of the twelve months.
 
 # In[ ]:
 
